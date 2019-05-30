@@ -25,7 +25,7 @@ public interface TareaDao {
     @Query("DELETE FROM tabla_tarea")
     void vaciarTareas();
 
-    @Query("SELECT * FROM tabla_tarea ORDER BY estado DESC")
+    @Query("SELECT * FROM tabla_tarea ORDER BY estado ASC")
     LiveData<List<Tarea>> listarTareas();
 
 }

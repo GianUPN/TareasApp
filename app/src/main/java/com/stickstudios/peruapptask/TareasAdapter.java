@@ -7,12 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class TareasAdapter extends RecyclerView.Adapter<TareasAdapter.TareasHolder> {
 
     private List<Tarea> tareaslist = new ArrayList<>();
+    private static final String[] tipos = {"Pendiente", "Finalizado", "Postergado"};
     public OnItemClickListener listener;
 
     @NonNull
@@ -28,7 +31,7 @@ public class TareasAdapter extends RecyclerView.Adapter<TareasAdapter.TareasHold
         Tarea tarea_actual = tareaslist.get(i);
         holder.txttitulo.setText(tarea_actual.getTitulo());
         holder.txtdescripcion.setText(tarea_actual.getDescripcion());
-
+        holder.txtestado.setText(tipos[tarea_actual.getEstado()]);
     }
 
     @Override
@@ -50,11 +53,13 @@ public class TareasAdapter extends RecyclerView.Adapter<TareasAdapter.TareasHold
 
         private TextView txttitulo;
         private TextView txtdescripcion;
+        private TextView txtestado;
 
         public TareasHolder(View view){
             super(view);
             txttitulo = view.findViewById(R.id.txt_titulo);
             txtdescripcion = view.findViewById(R.id.txt_descripcion);
+            txtestado = view.findViewById(R.id.txt_estado);
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override

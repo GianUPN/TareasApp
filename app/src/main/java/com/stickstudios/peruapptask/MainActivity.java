@@ -6,12 +6,14 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.bottomappbar.BottomAppBar;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.view.Menu;
 import android.view.View;
 
 import java.util.List;
@@ -19,15 +21,16 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private TareaViewModel tareaViewModel;
+    BottomAppBar  bottomAppBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        bottomAppBar = findViewById(R.id.bottomAppBar);
         RecyclerView recyclerTareas = findViewById(R.id.recycler_tareas);
         FloatingActionButton fab_agregar = findViewById(R.id.fab_agregar);
-
         recyclerTareas.setLayoutManager(new LinearLayoutManager(this));
         recyclerTareas.setHasFixedSize(true);
         final TareasAdapter adapter = new TareasAdapter();
@@ -74,11 +77,20 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("id", tarea.getId());
                 intent.putExtra("titulo", tarea.getTitulo());
                 intent.putExtra("descripcion", tarea.getDescripcion());
+                intent.putExtra("estado", tarea.getEstado());
                 //intent.putExtra(AddEditNoteActivity.EXTRA_PRIORITY, note.getPriority());
                 startActivityForResult(intent, 4);
             }
         });
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.bottom_appbar, menu);
+        return true;
+    }
+
+
 
     @Override
     protected void onActivityResult(int request, int result, Intent data){
@@ -87,18 +99,21 @@ public class MainActivity extends AppCompatActivity {
 
             String tit = data.getStringExtra("titulo");
             String desc = data.getStringExtra("descripcion");
-            Tarea tarea = new Tarea(tit,desc,1);
+            int estado = data.getIntExtra("estado",0);
+            Tarea tarea = new Tarea(tit,desc,estado);
             tareaViewModel.insertar(tarea);
         }
         if(request == 4 && result == 10){
             int id = data.getIntExtra("id",-1);
             String tit = data.getStringExtra("titulo");
             String desc = data.getStringExtra("descripcion");
-            Tarea tarea = new Tarea(tit,desc,1);
+            int estado = data.getIntExtra("estado",0);
+            Tarea tarea = new Tarea(tit,desc,estado);
             tarea.setId(id);
             if(id!=-1) {
                 tareaViewModel.actualizar(tarea);
             }
         }
     }
+
 }

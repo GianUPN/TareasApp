@@ -1,5 +1,6 @@
 package com.stickstudios.peruapptask;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ public class NuevaTareaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nueva_tarea);
 
+        this.setFinishOnTouchOutside(true);
         final EditText titulo = findViewById(R.id.edt_titulo);
         final EditText descripcion = findViewById(R.id.edt_descripcion);
         Button guardar = findViewById(R.id.btn_guardar);

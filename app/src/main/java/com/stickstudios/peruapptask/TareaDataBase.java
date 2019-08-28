@@ -47,7 +47,8 @@ public abstract class TareaDataBase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids) {
 
-            tareaDao.insertar(new Tarea("Bienvenido","esta es una tarea de prueba",1));
+            tareaDao.insertar(new Tarea("Bienvenido! :)","Para eliminar solo desliza esta tarjeta." +
+                    "Para modificar solo presiona.",1));
             //tareaDao.insertar(new Tarea("Comprar huevos2","ya se acabaron",1));
             //tareaDao.insertar(new Tarea("Comprar huevos3","ya se acabaron",1));
             //tareaDao.insertar(new Tarea("Comprar huevos4","ya se acabaron",1));

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Tareas App</string>
+    <string name="tutorial">Deslice hacia los lados para eliminar</string>
 </resources>

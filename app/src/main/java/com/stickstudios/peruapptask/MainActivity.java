@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        setTitle("Ya ta!");
         bottomAppBar = findViewById(R.id.bottomAppBar);
         RecyclerView recyclerTareas = findViewById(R.id.recycler_tareas);
         FloatingActionButton fab_agregar = findViewById(R.id.fab_agregar);
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable List<Tarea> tareas) {
                 //actualizamos el recycler
-                adapter.setList(tareas);
+                adapter.submitList(tareas);
             }
         });
 
@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 tareaViewModel.eliminar(adapter.getTareaAt(viewHolder.getAdapterPosition()));
             }
         });
+
         helper.attachToRecyclerView(recyclerTareas);
 
         adapter.SetOnClickListener(new TareasAdapter.OnItemClickListener() {

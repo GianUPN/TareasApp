@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTitle("Ya ta!");
+        setTitle("Lístame!");
         bottomAppBar = findViewById(R.id.bottomAppBar);
         RecyclerView recyclerTareas = findViewById(R.id.recycler_tareas);
         FloatingActionButton fab_agregar = findViewById(R.id.fab_agregar);

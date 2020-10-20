@@ -57,15 +57,6 @@ public class TareasAdapter extends ListAdapter<Tarea,TareasAdapter.TareasHolder>
         holder.txttitulo.setText(tarea_actual.getTitulo());
         holder.txtdescripcion.setText(tarea_actual.getDescripcion());
         holder.txtestado.setText(tipos[tarea_actual.getEstado()]);
-        /*if(tarea_actual.getTitulo().toLowerCase().contains("compra"))
-            holder.cardview.setBackgroundTintList(ColorStateList.valueOf(R.color.colorAccent));
-        else if(tarea_actual.getTitulo().toLowerCase().contains("tarea"))
-            holder.cardview.setBackgroundTintList(ColorStateList.valueOf(R.color.colorPrimaryDark));
-        else if(tarea_actual.getTitulo().toLowerCase().contains("trabajo"))
-            holder.cardview.setBackgroundTintList(ColorStateList.valueOf(R.color.colorPrimary));
-        else if(tarea_actual.getTitulo().toLowerCase().contains("cocina"))
-            holder.cardview.setBackgroundTintList(ColorStateList.valueOf(R.color.colorPrimaryText));
-        else holder.cardview.setBackgroundTintList(ColorStateList.valueOf(R.color.white));*/
     }
 
     public Tarea getTareaAt(int posicion){

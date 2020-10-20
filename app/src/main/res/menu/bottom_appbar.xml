@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/menu_filtro"
-        android:title="Filtro"
+        android:title="Hola!"
         android:icon="@drawable/ic_arrow_up">
 
     </item>
